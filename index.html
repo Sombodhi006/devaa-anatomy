@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sombodhi // Dev Anatomy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video autoplay muted loop playsinline class="bgv">
+        <source src="./bgv.mp4" type="video/mp4">
+    </video>
+
+    <div id="intro-overlay">
+        <h1 class="personal-text">Hello, Gautam</h1>
+        <h2 class="personal-text">this is Sombodhi</h2>
+    </div>
+
+    <section id="hero">
+        <div class="grid-overlay"></div> 
+        <header>
+            <p class="status-code">SYSTEM STATUS: DECLASSIFIED</p>
+            <h1>HOW I BUILT IT</h1>
+            <p class="sub-header">BORN OF NATURE PROJECT // TECHNICAL BREAKDOWN</p>
+        </header>
+    </section>
+
+    <section id="metrics">
+        <div class="metrics-grid">
+            <article class="stat-card" onclick="revealDesc(this)">
+                <h3 class="label">LINES_OF_CODE</h3>
+                <span class="number" data-target="180">0</span>
+                <div class="desc-wrapper"><p class="desc">Hand-written logic defining the site's engine across HTML, CSS, and JS.</p></div>
+            </article>
+
+            <article class="stat-card" onclick="revealDesc(this)">
+                <h3 class="label">DEBUG_SESSIONS</h3>
+                <span class="number" data-target="16">0</span>
+                <div class="desc-wrapper"><p class="desc">Hours dedicated to resolving 403 server errors and fixing 100MB asset limits.</p></div>
+            </article>
+
+            <article class="stat-card" onclick="revealDesc(this)">
+                <h3 class="label">ASSET_OPTIMIZATION</h3>
+                <div class="flex-row">
+                    <span class="number" data-target="90">0</span><span class="unit">%</span>
+                </div>
+                <div class="desc-wrapper"><p class="desc">Strategic compression techniques used to reduce 105MB assets to high-speed streams.</p></div>
+            </article>
+        </div>
+    </section>
+
+    <section id="pipeline">
+        <h2>DATA_LOW_TRANSMISSION</h2>
+        <div class="pipeline-container">
+            <div class="node" id="node-local" onclick="revealDesc(this)">
+                <span class="node-icon">💻</span>
+                <p>LOCAL_BUILD</p>
+                <div class="desc-wrapper"><p class="desc">Where raw code is tested locally.</p></div>
+            </div>
+            
+            <div class="line" id="line-1">
+                <div class="pulse"></div>
+            </div>
+
+            <div class="node" id="node-cloudinary" onclick="revealDesc(this)">
+                <span class="node-icon">☁️</span>
+                <p>ASSET_CDN</p>
+                <div class="desc-wrapper"><p class="desc">Global network handling optimized media delivery.</p></div>
+            </div>
+
+            <div class="line" id="line-2">
+                <div class="pulse"></div>
+            </div>
+
+            <div class="node" id="node-github" onclick="revealDesc(this)">
+                <span class="node-icon">🐙</span>
+                <p>GLOBAL_HOST</p>
+                <div class="desc-wrapper"><p class="desc">The live production server on GitHub Pages.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="terminal-section">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <p>SYSTEM_LOGS.EXE</p>
+            </div>
+            <div class="terminal-body">
+                <div id="typed-logs"></div>
+                <span class="cursor">_</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="final-narrative">
+        <div class="narrative-container">
+            <h2 class="narrative-title">DECLASSIFIED: THE_BUILD_LOG</h2>
+            <div class="narrative-body">
+                <p class="fade-in-text">Gautam, what you have just witnessed is more than a simple webpage; it is a synchronized digital ecosystem designed to bypass the physical constraints of standard web hosting. This project, "Born of Nature," began with a fundamental challenge: high-definition media (105MB) exceeds the storage and bandwidth capabilities of a standard GitHub deployment.</p>
+                <p class="fade-in-text">To solve this, I engineered a three-tier delivery pipeline. First, the Local Build served as the development laboratory where raw logic was written and debugged across 180+ lines of custom JavaScript and CSS. Second, I integrated Cloudinary's Asset CDN. By mapping a secure API handshake, I offloaded the heavy lifting—the 4K background video—to professional media servers. This allowed for 90% asset optimization without compromising visual fidelity.</p>
+                <p class="fade-in-text">The final layer is the Global Host. Using GitHub Pages as the broadcaster, the site is served globally through a distributed network. Every green laser pulse you see in the transmission diagram represents a real-world data packet successfully navigating this route. The terminal logs at the bottom are not just decorations; they are the real-time heartbeat of the system, verifying every handshake and media call</p>
+                <p class="fade-in-text">This build represents hours of troubleshooting, from fixing "403 Forbidden" errors to mastering the GSAP timeline engine and Lenis smooth scrolling. It is a testament to the fact that when standard tools reach their limit, engineering begins. This was my project defined by technical grit and the pursuit of a seamless user experience.</p>
+                <p class="fade-in-text">I have been learning these skills for quite some time now. While you may think I spend my nights watching movies, this is actually what I do instead. What you imagine might be true to some extent, but it’s harmless. The culmination of those skills is what you are seeing right now.</p>
+                <p class="fade-in-text">Thank you for taking the time to explore this build with me. I hope this breakdown provides clarity on the technical intricacies involved. Should you have any questions or wish to discuss further, please do not hesitate to reach out. And obviously, I alone could not have done this if not gemini helped and taught me these, so i obviously owe a lot to gemini as well.</p> 
+            </div>
+            <div class="final-signature">
+                <p>PROJECT_STATUS: VERIFIED</p>
+                <p>DEVELOPER: SOMBODHI PANDIT</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="portal-trigger-container">
+        <button class="portal-btn" onclick="openPortal()">OPEN_SOURCE_PORTAL</button>
+    </div>
+
+    <div id="code-portal" class="portal-overlay">
+        <div class="portal-content">
+            <div class="portal-header">
+                <h3>CORE_LOGIC_SNAPSHOTS</h3>
+                <button class="close-btn" onclick="closePortal()">CLOSE_X</button>
+            </div>
+            <div class="portal-body">
+                <div class="code-window">
+                    <div class="code-tabs">
+                        <button class="tab-btn active" data-tab="js">LOGIC.JS</button>
+                        <button class="tab-btn" data-tab="css">STYLING.CSS</button>
+                    </div>
+                    <pre id="code-display"><code>// JS LOGIC GOES HERE...</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
