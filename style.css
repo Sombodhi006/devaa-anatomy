@@ -1,0 +1,442 @@
+:root {
+    --bg-color: #050505;
+    --accent-color: #00ff88; /* Cyber Green */
+    --text-primary: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace; /* Techy font */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+/* THE GRID SYSTEM */
+.grid-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--glass-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+    background-size: 50px 50px; /* Size of the grid squares */
+    z-index: -1;
+    opacity: 0.3;
+}
+
+h1 {
+    font-size: 4rem;
+    
+    letter-spacing: 10px;
+    color: var(--accent-color);
+    text-shadow: 0 0 20px var(--accent-color);
+}
+
+#metrics {
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column; /* Stack header on top of the cards */
+    align-items: center;    /* Center everything horizontally */
+    justify-content: center;
+}
+
+.metrics-header {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--glass-border);
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.metrics-grid {
+    display: flex;
+    gap: 30px;              /* Space between the cards */
+    justify-content: center; /* Center the cards in the row */
+    flex-wrap: wrap;        /* Allows them to stack on mobile */
+    max-width: 1200px;
+}
+
+.stat-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    text-align: center;     /* Centers text inside the card */
+    min-width: 220px;
+}
+
+/* New: Keeps the number and % sign on the same line */
+.flex-row {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+   
+}
+
+#pipeline {
+    padding: 100px 0;
+    text-align: center;
+}
+
+#pipeline h2 {
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+    color: var(--glass-border);
+   
+}
+
+.pipeline-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.node {
+    padding: 20px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    border-radius: 10px;
+    width: 150px;
+}
+
+.node-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.line {
+    width: 120px;
+    height: 4px; /* Thicker for visibility */
+    background: #02a820;
+    position: relative;
+    overflow: hidden; /* This hides the pulse until it enters the line */
+    border-radius: 5px;
+}
+
+/* THE PULSE: The actual 'Laser' or 'Data' div */
+.pulse {
+    position: absolute;
+    top: 0;
+    left: -100%; /* Starts hidden to the left of the line */
+    width: 100%;
+    height: 100%;
+    /* A bright, high-energy gradient */
+    background: linear-gradient(90deg, transparent, var(--accent-color), #fff, var(--accent-color), transparent);
+    box-shadow: 0 0 15px var(--accent-color); /* This creates the 'glow' you wanted */
+}
+.bgv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2; /* Sits behind the grid (-1) */
+    opacity: 0.7; /* Subtle enough so the text stays readable */
+    filter: brightness(0.2) saturate(1.5);
+}
+
+#terminal-section {
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.terminal-window {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal-header p {
+    font-size: 0.7rem;
+    color: var(--glass-border);
+    margin-left: auto;
+}
+
+.terminal-body {
+    padding: 20px;
+    height: 250px;
+    overflow-y: auto;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* THE SCANLINE OVERLAY */
+.terminal-body {
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* This creates the tiny horizontal lines */
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 118, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; /* Allows you to still scroll the text underneath */
+}
+
+/* THE PERSONAL INTRO OVERLAY */
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: black; /* Solid black to hide everything until the fade */
+    z-index: 999; /* Top layer */
+}
+
+.personal-text {
+    font-family: 'Courier New', monospace;
+    color: white;
+    opacity: 0; /* Starts invisible for GSAP to fade in */
+    letter-spacing: 4px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.desc-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease; /* Backup transition */
+}
+
+.desc {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    margin-top: 15px;
+    line-height: 1.4;
+    border-top: 1px solid rgba(0, 255, 136, 0.2);
+    padding-top: 10px;
+}
+
+/* Add a cursor pointer so he knows it's clickable */
+.stat-card, .node {
+    cursor: pointer;
+}
+
+#final-narrative {
+    padding: 150px 20px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to bottom, transparent, rgba(0, 255, 136, 0.05));
+}
+
+.narrative-container {
+    max-width: 850px;
+    background: rgba(0, 0, 0, 0.9);
+    border-left: 4px solid var(--accent-color);
+    padding: 60px;
+    backdrop-filter: blur(15px);
+    box-shadow: -20px 0 50px rgba(0, 255, 136, 0.05);
+}
+
+.narrative-title {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+}
+
+.narrative-body p {
+    color: rgba(255, 255, 255, 0.95);
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    opacity: 1;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease; /* Safety fallback */
+}
+
+.final-signature {
+    margin-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+}
+
+/* PORTAL BUTTON */
+.portal-trigger-container {
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.portal-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 20px 40px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.portal-btn:hover {
+    background: var(--accent-color);
+    color: black;
+    box-shadow: 0 0 30px var(--accent-color);
+}
+
+/* THE MODAL OVERLAY */
+.portal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none; /* Controlled by GSAP */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.portal-content {
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.8); /* For GSAP opening effect */
+    opacity: 0;
+}
+
+.code-window {
+    flex-grow: 1;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#code-display {
+    background: #000;
+    padding: 20px;
+    border: 1px solid #1a1a1a;
+    color: #00ff88;
+    font-size: 0.85rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+:root {
+    --accent-color: #00ff88;
+    --glass-bg: rgba(10, 10, 10, 0.85);
+    --glass-border: rgba(0, 255, 136, 0.2);
+}
+
+body {
+    background-color: #050505;
+    color: white;
+    font-family: 'Courier New', monospace;
+    overflow-x: hidden;
+}
+
+/* SECTION SPACING & CENTERING */
+section {
+    padding: 120px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* THE SHARED GLASS BOX STYLE */
+.stat-card, .node, .terminal-window, .portal-content, .narrative-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-radius: 4px; /* Sharp technical corners look more B.Tech */
+}
+
+.metrics-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.stat-card {
+    padding: 30px;
+    min-width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
