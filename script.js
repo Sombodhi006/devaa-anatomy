@@ -115,7 +115,7 @@ window.addEventListener('load', () => { // Using 'load' ensures images/videos ar
         ease: "power2.out",
         scrollTrigger: {
             trigger: "#final-narrative",
-            start: "top 85%", // Fires as soon as the box touches the bottom of the screen
+            start: "top 65%", // Fires as soon as the box touches the bottom of the screen
             toggleActions: "play none none none",
             // This is critical for Lenis:
             invalidateOnRefresh: true 
@@ -162,4 +162,5 @@ gsap.to(".fade-in-text", {
     }
 
 });
+
 
