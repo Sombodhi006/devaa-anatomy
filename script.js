@@ -115,7 +115,7 @@ window.addEventListener('load', () => { // Using 'load' ensures images/videos ar
         ease: "power2.out",
         scrollTrigger: {
             trigger: "#final-narrative",
-            start: "top 55%", // Fires as soon as the box touches the bottom of the screen
+            start: "top 85%", // Fires as soon as the box touches the bottom of the screen
             toggleActions: "play none none none",
             // This is critical for Lenis:
             invalidateOnRefresh: true 
@@ -153,7 +153,7 @@ gsap.to(".fade-in-text", {
     stagger: 0.3,
     scrollTrigger: {
         trigger: "#final-narrative",
-        start: "top 95%",
+        start: "top 55%",
         // This ensures the animation plays even if the scroll is fast
         onEnter: () => {
             gsap.to(".fade-in-text", { opacity: 1, y: 0, stagger: 0.2 });
@@ -162,6 +162,7 @@ gsap.to(".fade-in-text", {
     }
 
 });
+
 
 
 
