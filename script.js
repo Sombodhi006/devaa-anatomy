@@ -61,6 +61,16 @@ window.addEventListener('DOMContentLoaded', () => {
             toggleActions: "play none none none"
         }
     });
+  // Add a check for mobile screens
+    const isMobile = window.innerWidth <= 768;
+
+   pipelineTL
+    .to("#line-1 .pulse", { 
+        [isMobile ? "top" : "left"]: "100%", // Move 'top' if mobile, 'left' if desktop
+        duration: 0.8, 
+        ease: "none" 
+    })
+    // ... repeat for line-2 ...
 
     pipelineTL
         .call(() => addLog("INITIALIZING DATA_FLOW..."))
@@ -150,4 +160,6 @@ gsap.to(".fade-in-text", {
             console.log("Narrative Revealed");
         }
     }
+
 });
+
