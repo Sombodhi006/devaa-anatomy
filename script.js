@@ -110,12 +110,12 @@ window.addEventListener('load', () => { // Using 'load' ensures images/videos ar
     gsap.to(".fade-in-text", {
         opacity: 1,
         y: 0,
-        duration: 5,
+        duration: 10,
         stagger: 0.3,
         ease: "power2.out",
         scrollTrigger: {
             trigger: "#final-narrative",
-            start: "top 65%", // Fires as soon as the box touches the bottom of the screen
+            start: "top 55%", // Fires as soon as the box touches the bottom of the screen
             toggleActions: "play none none none",
             // This is critical for Lenis:
             invalidateOnRefresh: true 
@@ -162,5 +162,6 @@ gsap.to(".fade-in-text", {
     }
 
 });
+
 
 
