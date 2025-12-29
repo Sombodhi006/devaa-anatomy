@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .from("#node-cloudinary", { opacity: 0, scale: 0.5, duration: 0.5, ease: "back.out(1.7)" })
         .call(() => addLog("CDN_HANDSHAKE: CLOUDINARY_ACTIVE"))
         .to("#line-2 .pulse", { left: "100%", duration: 0.8, ease: "none" })
-        .from("#node-github", { opacity: 0, scale: 0.5, duration: 0.5, ease: "back.out(1.7)" })
+        .from("#node-github", { opacity: 0, scale: 0.5, duration: 5, ease: "back.out(1.7)" })
         .call(() => addLog("SERVER_SYNC: GITHUB_PAGES_LIVE"));
 });
 
@@ -162,6 +162,7 @@ gsap.to(".fade-in-text", {
     }
 
 });
+
 
 
 
