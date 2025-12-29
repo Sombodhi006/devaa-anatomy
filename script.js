@@ -153,7 +153,7 @@ gsap.to(".fade-in-text", {
     stagger: 0.3,
     scrollTrigger: {
         trigger: "#final-narrative",
-        start: "top 55%",
+        start: "top 25%",
         // This ensures the animation plays even if the scroll is fast
         onEnter: () => {
             gsap.to(".fade-in-text", { opacity: 1, y: 0, stagger: 0.2 });
@@ -162,6 +162,7 @@ gsap.to(".fade-in-text", {
     }
 
 });
+
 
 
 
